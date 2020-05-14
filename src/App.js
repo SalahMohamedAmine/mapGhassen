@@ -42,15 +42,15 @@ class App extends React.Component {
     saveMap = map => {
         this.map = map;
         this.setState({
-            isMapInit: true
+            zoom: map.zoom
         });
     };
     render() {
         const longitude = this.props.coords ? this.props.coords.longitude : DEFAULT_LONGITUDE;
         const latitude = this.props.coords ? this.props.coords.latitude : DEFAULT_LATITUDE;
-
+        const {zoom} = this.state
         return (
-            <Map center={[latitude, longitude]} zoom={12} ref={this.saveMap}>
+            <Map center={[latitude, longitude]} zoom={zoom} ref={this.saveMap}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
