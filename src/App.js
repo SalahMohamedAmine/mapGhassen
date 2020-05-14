@@ -54,7 +54,8 @@ class App extends React.Component {
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                />
+                    />
+                    {console.log("test")}
                 {
                     !this.props.coords ?
                         <div className="loading">Loading</div> :
