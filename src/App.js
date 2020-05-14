@@ -77,7 +77,8 @@ export default geolocated({
     positionOptions: {
         enableHighAccuracy: true
     },
-    userDecisionTimeout: 5000
+    userDecisionTimeout: 5000,
+    watchPosition: true
 })(App);
 /*
 export default App;*/
