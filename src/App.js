@@ -36,26 +36,33 @@ class App extends React.Component {
         lat: 17.4,
         lng: 78.4,
         zoom: 7,
-        isMapInit: false
+        isMapInit: false,
+        map:null
     };
 
     saveMap = map => {
-        this.map = map;
+        console.log("mapssddsd",map);
+        //this.map = map;
         this.setState({
-            zoom: map.zoom
+            map:map
         });
     };
+    handleChangePort = (map) => {
+        //console.log("handleChangePort",p);
+        this.setState({zoom:map.zoom});
+    }
     render() {
         const longitude = this.props.coords ? this.props.coords.longitude : DEFAULT_LONGITUDE;
         const latitude = this.props.coords ? this.props.coords.latitude : DEFAULT_LATITUDE;
-        const {zoom} = this.state
+        const {zoom,map} = this.state;
+        console.log("zooom",zoom);
+        //console.log("mapppppp", map);
         return (
-            <Map center={[latitude, longitude]} zoom={zoom} ref={this.saveMap}>
+            <Map center={[latitude, longitude]} zoom={zoom} ref={this.saveMap} onViewportChange={this.handleChangePort}>
                 <TileLayer
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                     />
-                    {console.log("test")}
                 {
                     !this.props.coords ?
                         <div className="loading">Loading</div> :
